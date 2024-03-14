@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { paintingsData } from '@/data/paintingsData';
 import router from '@/router';
-import { onMounted, onUnmounted, reactive, watch } from 'vue';
+import { computed, onMounted, onUnmounted, reactive, watch } from 'vue';
 import { pageData } from '@/data/paintingsData';
 
-const PAINTINGS_MAX = 96
+const PAINTINGS_MAX = 100
+
+const emit = defineEmits<{
+    (e: 'wheelEventAvailable', available: boolean): void,
+}>()
 
 const props = defineProps({
     id: {
@@ -17,6 +21,8 @@ const props = defineProps({
     }
 })
 
+const paintingSize = computed(() => paintingsData[parseInt(props.id) - 1].size)
+
 const active = reactive({
     previous: true,
     next: true
@@ -28,6 +34,26 @@ const eventDOM = {
             switchPainting(false)
         } else if (event.key == 'ArrowRight' && path.painting < PAINTINGS_MAX && pageData[props.page].includes(path.painting + 1)) {
             switchPainting(true)
+        }
+    },
+    wheelAvailable: true,
+    wheel: (event: WheelEvent) => {
+        if (event.deltaY > 0 && eventDOM.wheelAvailable) {
+
+            eventDOM.wheelAvailable = false
+            setTimeout(() => {
+                eventDOM.wheelAvailable = true
+            }, 200)
+
+            switchPainting(true)
+        } else if (eventDOM.wheelAvailable) {
+
+            eventDOM.wheelAvailable = false
+            setTimeout(() => {
+                eventDOM.wheelAvailable = true
+            }, 200)
+
+            switchPainting(false)
         }
     }
 }
@@ -62,6 +88,8 @@ watch(() => props.id, () => {
 })
 
 onMounted(() => {
+    emit('wheelEventAvailable', false) //!\\ attention
+    window.onwheel = eventDOM.wheel
     window.onkeydown = eventDOM.keyDown;
     (pageData[props.page][pageData[props.page].length - 1] == parseInt(props.id)) ? active.next = false : active.next = true;
     (pageData[props.page][0] == parseInt(props.id)) ? active.previous = false : active.previous = true
@@ -69,15 +97,20 @@ onMounted(() => {
 
 onUnmounted(() => {
     window.onkeydown = () => { }
+    emit('wheelEventAvailable', true)
 })
+
 </script>
 
 <template>
     <section id="viewer">
         <section class="flex" draggable="true" @dragstart.prevent>
-
-            <img :src="`/assets/images/2000x2000/${props.id}.jpg`" :key="props.id"
-                :style="'width:' + paintingsData[parseInt(props.id) - 1].size[0] * 20 + 'px; height:' + paintingsData[parseInt(props.id) - 1].size[0] * 20 + 'px;'" />
+            <Transition name="fade" mode="out-in">
+                <a :key="props.id" TARGET="_blank" :href="`/assets/img/1000/${props.id}.jpg`">
+                    <img :src="`/assets/img/${paintingSize[0]}/${props.id}.jpg`" :key="props.id"
+                        :style="`width: ${paintingSize[0]}px; height: ${paintingSize[1]}px;`" />
+                </a>
+            </Transition>
 
             <div @click="getBack()">
                 <div>
@@ -105,6 +138,7 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 @use '@/assets/base.scss' as *;
+@use '@/assets/animations.scss' as *;
 
 #viewer {
     position: absolute;
@@ -184,5 +218,13 @@ p {
     &> :nth-child(1) {
         margin-left: -20px;
     }
+}
+
+.fade-enter-active {
+    animation: fade 0.05s ease-out;
+}
+
+.fade-leave-active {
+    animation: fade 0.1s reverse ease-in;
 }
 </style>

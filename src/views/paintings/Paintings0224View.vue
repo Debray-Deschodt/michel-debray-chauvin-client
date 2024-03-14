@@ -7,6 +7,10 @@ const VIEW_NAME = 'Paintings0224'
 const PAGE_NUMBER = 1
 const COMPOSITIONS_NUMBER = 2
 
+const emit = defineEmits<{
+    (e: 'wheelEventAvailable', available: boolean): void
+}>()
+
 const active = reactive({
     preview: true
 })
@@ -44,7 +48,8 @@ onMounted(() => {
                 <Composition :data="4" @viewer="viewer" @loaded="loaded.numberIncrement()" />
             </section>
         </section>
-        <RouterView :id="$route.params.id" :page="PAGE_NUMBER" />
+        <RouterView :id="$route.params.id" :page="PAGE_NUMBER"
+            @wheelEventAvailable="emit('wheelEventAvailable', $event)" />
     </section>
 </template>
 
@@ -53,7 +58,7 @@ onMounted(() => {
 
 #Paintings0224 {
     position: absolute;
-    top: 68px;
+    top: calc(8svh - 10px); //68px
     left: 320px;
 }
 

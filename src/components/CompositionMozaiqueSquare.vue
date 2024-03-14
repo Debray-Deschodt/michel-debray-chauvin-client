@@ -36,10 +36,10 @@ const props = defineProps({
 </script>
 
 <template>
-    <section class="composition-mozaique-square">
+    <section class="composition-mozaique-square" draggable="true" @dragstart.prevent>
         <div class="flex">
             <img :id="'image' + pict" v-for="pict in compositionsData[props.data]" :key="pict"
-                :src="'/assets/images/100x100/' + pict + '.jpg'" @click="emit('viewer', pict)" class="pict" />
+                :src="'/assets/img/100/' + pict + '.jpg'" @click="emit('viewer', pict)" class="pict" />
         </div>
     </section>
 </template>
@@ -51,10 +51,10 @@ const props = defineProps({
 .flex {
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
-    height: 400px;
+    width: 39svh; //400px
+    height: 39svh; //400px
     gap: 0;
-    margin: 20px;
+    margin: 2svh; //20px
 }
 
 .pict {

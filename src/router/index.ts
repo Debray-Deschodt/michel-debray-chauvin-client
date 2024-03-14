@@ -8,6 +8,7 @@ import ViewerView from '../views/ViewerView.vue'
 import ExpositionsView from '../views/ExpositionsView.vue'
 import ContactView from '../views/ContactView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
+import TermsAndConditions from '../views/TermsAndConditions.vue'
 
 const routes = [
   {
@@ -21,7 +22,7 @@ const routes = [
     component: AboutView
   },
   {
-    path: '/peintures0124',
+    path: '/paintings-01-24',
     name: 'Paintings0124',
     component: Paintings0124View,
     children: [
@@ -33,7 +34,7 @@ const routes = [
     ]
   },
   {
-    path: '/peintures0224',
+    path: '/paintings-02-24',
     name: 'Paintings0224',
     component: Paintings0224View,
     children: [
@@ -45,7 +46,7 @@ const routes = [
     ]
   },
   {
-    path: '/peintures0324',
+    path: '/paintings-03-24',
     name: 'Paintings0324',
     component: Paintings0324View,
     children: [
@@ -57,7 +58,7 @@ const routes = [
     ]
   },
   // {
-  //   path: '/peintures0424',
+  //   path: '/paintings0424',
   //   name: 'Peintings0424',
   //   component: () =>
   //     import(/* webpackChunkName: "Paintings0424" */ '@/views/paintings/Paintings0424View.vue'),
@@ -70,7 +71,7 @@ const routes = [
   //   ]
   // },
   // {
-  //   path: '/peintures0524',
+  //   path: '/paintings0524',
   //   name: 'Paintings0524',
   //   component: () =>
   //     import(/* webpackChunkName: "Paintings0524" */ '@/views/paintings/Paintings0524View.vue'),
@@ -83,7 +84,7 @@ const routes = [
   //   ]
   // },
   // {
-  //   path: '/peintures0624',
+  //   path: '/paintings0624',
   //   name: 'Paintings0624',
   //   component: () =>
   //     import(/* webpackChunkName: "Paintings06.24" */ '@/views/paintings/Paintings0624View.vue'),
@@ -96,7 +97,7 @@ const routes = [
   //   ]
   // },
   {
-    path: '/expositions',
+    path: '/exhibitions',
     name: 'Expositions',
     component: ExpositionsView
   },
@@ -104,6 +105,11 @@ const routes = [
     path: '/contact',
     name: 'Contact',
     component: ContactView
+  },
+  {
+    path: '/terms-and-conditions_privacy-policy',
+    name: 'TermsAndConditions',
+    component: TermsAndConditions
   },
   {
     path: '/:pathMatch(.*)*',

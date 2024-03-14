@@ -3,7 +3,7 @@
 
 <template>
   <section id="home">
-    <img src="../assets/images/01.jpg" />
+    <img src="../assets/img/home.jpg" draggable="true" @dragstart.prevent />
   </section>
 </template>
 
@@ -13,11 +13,11 @@
 #home {
   position: absolute;
   top: 134px;
-  left: 317px;
+  left: 340px;
 }
 
 img {
-  width: 664px;
+  width: 840px;
   height: 369px;
 }
 </style>

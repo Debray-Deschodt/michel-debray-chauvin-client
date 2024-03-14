@@ -1,16 +1,28 @@
 <script setup lang="ts">
-import TheNavigation from '@/components/TheNavigation.vue'
+import Navigation from '@/components/TheNavigation.vue'
+import Footer from '@/components/TheFooter.vue'
 import router from './router';
+import { reactive } from 'vue';
 
+const contact = {
+  message: ''
+}
+
+const eventDOM = reactive({
+  wheelAvailable: true
+})
 </script>
 
 <template>
   <RouterView v-slot="{ Component }">
     <Transition name="fade" mode="out-in">
-      <component :is="Component" :key="router.currentRoute.value.name" />
+      <component :is="Component" :key="router.currentRoute.value.name"
+        @wheelEventAvailable="eventDOM.wheelAvailable = $event" @contactMessage="contact.message = $event"
+        :contactPreviousMessage="contact.message" />
     </Transition>
   </RouterView>
-  <TheNavigation draggable="true" @dragstart.prevent />
+  <Navigation :wheelEventIsAvailable="eventDOM.wheelAvailable" />
+  <Footer />
 </template>
 
 <style scoped lang='scss'>
