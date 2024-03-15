@@ -147,12 +147,13 @@ onMounted(() => {
     left: 0;
     z-index: 1;
     width: 256px;
-    padding: calc(8svh - 10px) 20px 250px 50px;
+    padding: calc(8svh - 10px) 20px 20px 50px;
 }
 
 nav {
     opacity: 1;
     transition: all 0.6s ease-out;
+    height: calc(22px + 34px + 180px + 24px - 17px + 11.5svh);
 }
 
 h1 {

@@ -17,13 +17,15 @@
 footer {
     position: absolute;
     top: calc(97svh - 19px);
-    left: 338px;
+    left: calc(320px + 2svh);
 
     display: flex;
     justify-content: space-between;
 
-    width: 844px;
-    padding: 11px 0;
+    width: calc(82svh + 4px);
+    min-width: 635px;
+
+    padding: 11px 0 0 0;
 
     border-top: 1px solid #b8b8b8;
 

@@ -117,14 +117,16 @@ onUnmounted(() => {
 
 #termsAndConditions {
     position: absolute;
-    top: 134px;
+    // top: 134px;
+    top: calc(8svh + 55px);
     left: 340px;
     width: 849px;
     // calc(97svh - 19px) footer height
-    height: calc(100svh - 134px - 3svh - 19px);
+    // height: calc(100svh - 134px - 3svh - 19px);
+    height: calc((100svh - 8svh - 3svh) + (-55px - 19px));
     overflow: auto;
     // padding-right: 70px;
-    padding-right: 70px;
+    padding-right: 138px;
     font-family: "Roboto", sans-serif;
 }
 
@@ -163,18 +165,5 @@ strong {
     font-weight: 500;
     font-size: 14;
     font-family: inherit;
-}
-
-::-webkit-scrollbar {
-    width: 7px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background: rgba(59, 58, 58, 0.322);
 }
 </style>

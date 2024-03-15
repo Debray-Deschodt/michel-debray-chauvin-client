@@ -12,7 +12,8 @@
 
 #home {
   position: absolute;
-  top: 134px;
+  // top: 134px;
+  top: calc(8svh + 55px);
   left: 340px;
 }
 

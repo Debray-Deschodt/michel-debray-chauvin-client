@@ -1,5 +1,35 @@
 <script setup lang="ts">
 import { textData_about } from '@/data/textData';
+import { onMounted, onUnmounted } from 'vue';
+
+const emit = defineEmits<{
+  (e: 'wheelEventAvailable', available: boolean): void
+}>()
+
+const html = {
+  get about() {
+    return document.querySelector('#about')
+  }
+}
+
+const isOverflown = () => {
+  if (html.about!.scrollHeight == html.about!.clientHeight) {
+    emit('wheelEventAvailable', true)
+  } else {
+    emit('wheelEventAvailable', false)
+    window.onwheel = () => { }
+  }
+}
+
+onMounted(() => {
+  window.onresize = isOverflown
+  isOverflown()
+})
+
+onUnmounted(() => {
+  window.onresize = () => { }
+  emit('wheelEventAvailable', true)
+})
 </script>
 
 <template>
@@ -11,7 +41,7 @@ import { textData_about } from '@/data/textData';
       <p>{{ textData_about[0][2] }}</p>
       <p>{{ textData_about[0][3] }}</p>
     </div>
-    <div style="border-left: 2px solid #a7a7a7; padding-left: 29px; height: 488px;">
+    <div class="notranslate" style="border-left: 2px solid #a7a7a7; padding-left: 29px; height: 488px;">
       <p style="margin-bottom: 36px;">{{ textData_about[1][0] }}</p>
       <p>{{ textData_about[1][1] }}</p>
       <p>{{ textData_about[1][2] }}</p>
@@ -25,10 +55,15 @@ import { textData_about } from '@/data/textData';
 
 #about {
   position: absolute;
-  top: 134px;
+  // top: 134px;
+  top: calc(8svh + 55px);
   left: 340px;
+  height: calc(92svh - 55px - 3svh - 19px - 20px);
+  overflow: auto;
+  padding: 0 70px 20px 0;
   display: flex;
   gap: 40px;
+
 }
 
 img {

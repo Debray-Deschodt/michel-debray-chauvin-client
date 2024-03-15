@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import axios from 'axios';
 import { onMounted, ref, watch } from 'vue';
 
 const props = defineProps({
@@ -20,8 +21,10 @@ const textarea = {
         return document.querySelector('#contact_textarea')
     },
     placeholder: ref(''),
-    post: () => {
-        textarea.placeholder.value = 'Message envoyer'
+    post: async () => {
+        textarea.placeholder.value = 'Message envoyé'
+        const args = { message: message.value }
+        await axios.post('/contact', args)
         message.value = ''
     }
 }
@@ -43,6 +46,9 @@ watch(() => message.value, () => emit('contactMessage', message.value))
 
 onMounted(() => {
     message.value = props.contactPreviousMessage
+    if (message.value != '') {
+        textarea.HTML?.setAttribute('style', 'height: 300px')
+    }
 })
 
 </script>
@@ -51,8 +57,9 @@ onMounted(() => {
     <section id="contact">
         <h2>CONTACT</h2>
         <div>
-            <p><strong>Par e-mail : </strong><dfn>michel-debray-chauvin@gmail.com</dfn></p>
-            <p><strong>Sur les réseaux sociaux : </strong><dfn>Instagram</dfn> et <dfn>WhatsApp</dfn></p>
+            <p><strong>Par e-mail : </strong><a TARGET="_blank"
+                    href="mailto:michel.debray.chauvin@gmail.com">michel.debray.chauvin@gmail.com</a></p>
+            <p><strong>Sur les réseaux sociaux : </strong><a>Instagram</a> et <a>YouTube</a></p>
         </div>
         <div>
             <p><strong>Par message :</strong></p>
@@ -70,7 +77,8 @@ onMounted(() => {
 
 #contact {
     position: absolute;
-    top: 140px;
+    // top: 140px;
+    top: calc(8svh + 55px);
     left: 340px;
 
     &>div {
@@ -115,6 +123,7 @@ button {
     font-weight: 500;
     border: none;
     margin-top: 10px;
+    cursor: pointer;
 
     transition: background-color 0.1s ease-in-out;
 
@@ -123,7 +132,7 @@ button {
     }
 
     &:active {
-        background-color: rgb(117, 116, 116);
+        background-color: rgb(116, 116, 116);
     }
 }
 
@@ -132,21 +141,20 @@ strong {
     font-size: 14.5px;
 }
 
-dfn {
+a {
     font-style: normal;
-    text-decoration: underline;
+    text-decoration: underline rgb(145, 145, 145);
+    color: black;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+        color: rgb(131, 131, 131);
+        text-decoration: underline rgb(158, 158, 158);
+    }
 }
 
 ::-webkit-scrollbar {
     width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 1px;
-    background: rgba(59, 58, 58, 0.322);
 }
 </style>
