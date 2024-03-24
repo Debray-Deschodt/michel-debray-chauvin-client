@@ -59,8 +59,9 @@ onMounted(() => {
 
 #Paintings0124 {
     position: absolute;
-    top: calc(8svh - 10px); //68px
-    left: 320px;
+    top: calc(8vh - 10px); //68px
+    // left: 320px;
+    left: calc(200px + 6vw);
 }
 
 .compositions {

@@ -146,14 +146,14 @@ onMounted(() => {
     top: 0;
     left: 0;
     z-index: 1;
-    width: 256px;
-    padding: calc(8svh - 10px) 20px 20px 50px;
+    width: 235px;
+    padding: calc(8vh - 10px) 0 20px 50px;
 }
 
 nav {
     opacity: 1;
     transition: all 0.6s ease-out;
-    height: calc(22px + 34px + 180px + 24px - 17px + 11.5svh);
+    height: calc(22px + 34px + 180px + 24px - 17px + 11.5vh);
 }
 
 h1 {
@@ -195,6 +195,12 @@ a {
 
     &:hover {
         color: rgb(170, 170, 170) !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #navigation {
+        padding: calc(8vh - 10px) 0 20px 1vw;
     }
 }
 </style>

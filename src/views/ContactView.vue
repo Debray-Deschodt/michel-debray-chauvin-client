@@ -78,8 +78,8 @@ onMounted(() => {
 #contact {
     position: absolute;
     // top: 140px;
-    top: calc(8svh + 55px);
-    left: 340px;
+    top: calc(8vh + 55px);
+    left: calc(200px + 6vw + 2vh); //340px
 
     &>div {
         margin-bottom: 55px;
@@ -102,13 +102,14 @@ p {
 textarea {
     height: 80px;
     width: 600px;
+    width: calc(28vw + 80px); //31.5
     resize: none;
     outline: none;
     caret-color: rgb(67, 67, 67);
     font-size: 16px;
-    padding: 25px;
+    padding: 4vh;
+    padding-bottom: 25px;
     border: 3px solid rgb(133, 128, 128);
-    // border-radius: 1px;
     overflow: hidden;
 }
 
@@ -156,5 +157,55 @@ a {
 
 ::-webkit-scrollbar {
     width: 8px;
+}
+
+@media (max-height: 385px) {
+    textarea {
+        height: 20px !important;
+    }
+}
+
+@media (max-height: 460px) {
+    #contact {
+        &>div {
+            margin-bottom: 15px;
+        }
+    }
+
+    p {
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-height: 475px) {
+    button {
+        margin-top: 1vh;
+    }
+
+    textarea {
+        font-size: 13.5px;
+    }
+}
+
+@media (max-height: 515px) {
+    h2 {
+        display: none;
+    }
+}
+
+@media (max-height: 770px) and (min-height: 385px) {
+    textarea {
+        height: 80px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    p {
+        font-size: 13px;
+    }
+
+    strong {
+        font-size: 13.5px;
+    }
 }
 </style>

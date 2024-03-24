@@ -503,6 +503,166 @@ const paintings = [
     id: '100',
     size: SIZE[1],
     info: '#100, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '101',
+    size: SIZE[1],
+    info: '#101, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '102',
+    size: SIZE[1],
+    info: '#102, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '103',
+    size: SIZE[1],
+    info: '#103, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '104',
+    size: SIZE[1],
+    info: '#104, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '105',
+    size: SIZE[1],
+    info: '#105, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '106',
+    size: SIZE[1],
+    info: '#106, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '107',
+    size: SIZE[1],
+    info: '#107, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '108',
+    size: SIZE[1],
+    info: '#108, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '109',
+    size: SIZE[1],
+    info: '#109, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '110',
+    size: SIZE[1],
+    info: '#110, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '111',
+    size: SIZE[1],
+    info: '#111, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '112',
+    size: SIZE[1],
+    info: '#112, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '113',
+    size: SIZE[1],
+    info: '#113, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '114',
+    size: SIZE[1],
+    info: '#114, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '115',
+    size: SIZE[1],
+    info: '#115, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '116',
+    size: SIZE[1],
+    info: '#116, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '117',
+    size: SIZE[1],
+    info: '#117, 25x25cms, acrylique et huile sur toile, 03-2024'
+  },
+  {
+    id: '118',
+    size: SIZE[1],
+    info: '#118, 25x25cms, acrylique et huile sur toile, 03-2024'
+  },
+  {
+    id: '119',
+    size: SIZE[1],
+    info: '#119, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '120',
+    size: SIZE[1],
+    info: '#120, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '121',
+    size: SIZE[1],
+    info: '#121, 25x25cms, acrylique et huile sur toile, 03-2024'
+  },
+  {
+    id: '122',
+    size: SIZE[1],
+    info: '#122, 25x25cms, acrylique et huile sur toile, 03-2024'
+  },
+  {
+    id: '123',
+    size: SIZE[1],
+    info: '#123, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '124',
+    size: SIZE[1],
+    info: '#124, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '125',
+    size: SIZE[1],
+    info: '#125, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '126',
+    size: SIZE[1],
+    info: '#126, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '129',
+    size: SIZE[1],
+    info: '#129, 25x25cms, acrylique et huile sur toile, 03-2024'
+  },
+  {
+    id: '130',
+    size: SIZE[1],
+    info: '#130, 25x25cms, acrylique et huile sur toile, 03-2024'
+  },
+  {
+    id: '131',
+    size: SIZE[1],
+    info: '#131, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '132',
+    size: SIZE[1],
+    info: '#132, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '137',
+    size: SIZE[1],
+    info: '#137, 25x25cms, huile sur toile, 03-2024'
+  },
+  {
+    id: '138',
+    size: SIZE[1],
+    info: '#138, 25x25cms, huile sur toile, 03-2024'
   }
 ]
 
@@ -513,13 +673,15 @@ const compositions = [
   [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64],
   [65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80],
   [81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96],
-  [97, 98, 99, 100]
+  [97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112],
+  [113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126],
+  [129, 130, 131, 132, 137, 138]
 ]
 
 const page = [
   compositions[0].concat(compositions[1].concat(compositions[2])),
   compositions[3].concat(compositions[4]),
-  compositions[5].concat(compositions[6])
+  compositions[5].concat(compositions[6].concat(compositions[7]).concat(compositions[8]))
 ]
 
 export { paintings as paintingsData, compositions as compositionsData, page as pageData }

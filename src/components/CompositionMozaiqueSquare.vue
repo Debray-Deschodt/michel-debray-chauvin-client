@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { compositionsData } from '@/data/paintingsData';
+import type { AnaliticsPictInterface } from '@/interface/analitics.interface';
+import axios from 'axios';
+import { inject, type Ref } from 'vue';
 
 const emit = defineEmits<{
-    // (e: 'loaded', from: number): void,
     (e: 'viewer', painting: number): void
 }>()
+
+const admin = inject<Ref<boolean>>('admin')
+const analitics = inject<Ref<AnaliticsPictInterface[]>>('analitics')
+const analiticsSwitcher = inject<Ref<boolean>>('analiticsSwitcher')
 
 const props = defineProps({
     data: {
@@ -13,33 +19,28 @@ const props = defineProps({
     }
 })
 
-// const images = {
-//     content: [new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(), new Image(),],
-//     loaded: 0,
-//     set imagesSetter(data: number) {
-//         for (let i = 0; i < 16; i++) {
-//             this.content[i].src = compositionsData[data][i] + '.jpg'
-//             this.content[i].onload = () => this.loaded++
-//         }
-//     }
-// }
-
-// watch(() => images.loaded, () => {
-//     if (images.loaded == 16) emit('loaded', props.data)
-// })
-
-// onMounted(() => {
-//     const img = document.querySelector('#image13') as HTMLImageElement
-//     img.src = 'src/images/2000x2000/4.jpg'
-// })
+const eventDOM = {
+    pictClick: async (pict: number) => {
+        if (!admin?.value) {
+            const args = { id: pict }
+            console.log(pict)
+            axios.post('/pict', args)
+        }
+        emit('viewer', pict)
+    }
+}
 
 </script>
 
 <template>
-    <section class="composition-mozaique-square" draggable="true" @dragstart.prevent>
-        <div class="flex">
-            <img :id="'image' + pict" v-for="pict in compositionsData[props.data]" :key="pict"
-                :src="'/assets/img/100/' + pict + '.jpg'" @click="emit('viewer', pict)" class="pict" />
+    <section class="flex" draggable="true" @dragstart.prevent>
+        <div class="pict" v-for="pict in compositionsData[props.data]" :key="pict" @click="eventDOM.pictClick(pict)">
+            <img :id="'image' + pict" :src="'/assets/img/100/' + pict + '.jpg'" />
+            <Transition name="fade" mode="out-in">
+                <div v-if="admin && analiticsSwitcher" class="analitics">
+                    {{ analitics?.find((_pict) => _pict.id == pict)?.weight || 0 }}
+                </div>
+            </Transition>
         </div>
     </section>
 </template>
@@ -51,21 +52,38 @@ const props = defineProps({
 .flex {
     display: flex;
     flex-wrap: wrap;
-    width: 39svh; //400px
-    height: 39svh; //400px
+    width: 39vh; //400px
+    height: 39vh; //400px
     gap: 0;
-    margin: 2svh; //20px
+    margin: 2vh; //20px
 }
 
 .pict {
-    background-size: cover;
+    position: relative;
     width: 25%;
     height: 25%;
+    background-size: cover;
     transition: all 0.1s ease-in-out;
 
     &:hover {
         filter: brightness(0.95);
         cursor: pointer;
     }
+
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.analitics {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 60%;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.486);
+    padding: 10%;
+    color: rgb(54, 54, 54);
 }
 </style>

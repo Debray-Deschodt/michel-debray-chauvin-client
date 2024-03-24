@@ -14,7 +14,7 @@
 
 section {
     display: flex;
-    margin: calc(11.5svh - 17px) 22px; //96px 22px
+    margin: calc(11.5vh - 17px) 22px; //96px 22px
     transform-origin: 0% 0%;
     scale: 0.2;
     gap: 74px;

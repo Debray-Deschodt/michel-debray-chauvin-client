@@ -54,7 +54,7 @@ onMounted(() => {
 
 #Paintings0124 {
     position: absolute;
-    top: calc(8svh - 10px);
+    top: calc(8vh - 10px);
     left: 320px;
 }
 

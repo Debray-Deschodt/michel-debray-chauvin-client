@@ -21,7 +21,6 @@ const loaded = {
         return document.querySelector('#' + VIEW_NAME + ' .compositions')
     },
     numberIncrement: () => {
-        console.log('loaded')
         loaded._number++
         if (loaded._number >= COMPOSITIONS_NUMBER) {
             loaded.compositionsHTML?.setAttribute('style', 'opacity: 1;')
@@ -58,8 +57,8 @@ onMounted(() => {
 
 #Paintings0224 {
     position: absolute;
-    top: calc(8svh - 10px); //68px
-    left: 320px;
+    top: calc(8vh - 10px);
+    left: calc(200px + 6vw);
 }
 
 .compositions {

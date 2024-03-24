@@ -2,10 +2,12 @@
 import router from '@/router'
 import { onMounted, reactive } from 'vue';
 import Composition from '@/components/CompositionMozaiqueSquare.vue'
+import Composition2 from '@/components/CompositionMozaiqueSquare2.vue'
+
 
 const VIEW_NAME = 'Paintings0324'
 const PAGE_NUMBER = 2
-const COMPOSITIONS_NUMBER = 2
+const COMPOSITIONS_NUMBER = 4
 
 const emit = defineEmits<{
     (e: 'wheelEventAvailable', available: boolean): void
@@ -21,7 +23,6 @@ const loaded = {
         return document.querySelector('#' + VIEW_NAME + ' .compositions')
     },
     numberIncrement: () => {
-        console.log('loaded')
         loaded._number++
         if (loaded._number >= COMPOSITIONS_NUMBER) {
             loaded.compositionsHTML?.setAttribute('style', 'opacity: 1;')
@@ -44,8 +45,12 @@ onMounted(() => {
     <section :id="VIEW_NAME">
         <section v-if="active.preview" class="compositions">
             <section class="flex">
-                <Composition :data="5" @viewer="viewer" @loaded="loaded.numberIncrement()" />
-                <Composition :data="6" @viewer="viewer" @loaded="loaded.numberIncrement()" />
+                <Composition :data="5" @viewer="viewer" />
+                <Composition :data="6" @viewer="viewer" />
+            </section>
+            <section class="flex">
+                <Composition :data="7" @viewer="viewer" />
+                <Composition2 :data="8" @viewer="viewer" />
             </section>
         </section>
         <RouterView :id="$route.params.id" :page="PAGE_NUMBER"
@@ -58,8 +63,8 @@ onMounted(() => {
 
 #Paintings0324 {
     position: absolute;
-    top: calc(8svh - 10px); //68px
-    left: 320px;
+    top: calc(8vh - 10px); //68px
+    left: calc(200px + 6vw);
 }
 
 .compositions {
@@ -69,5 +74,7 @@ onMounted(() => {
 
 .flex {
     display: flex;
+    color: rgba(146, 96, 96, 0.5);
+    color: rgb(216, 216, 216, 0.5);
 }
 </style>

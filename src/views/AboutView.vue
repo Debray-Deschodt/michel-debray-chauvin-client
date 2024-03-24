@@ -56,9 +56,9 @@ onUnmounted(() => {
 #about {
   position: absolute;
   // top: 134px;
-  top: calc(8svh + 55px);
-  left: 340px;
-  height: calc(92svh - 55px - 3svh - 19px - 20px);
+  top: calc(8vh + 55px);
+  left: calc(200px + 6vw + 2vh); //340px  
+  height: calc(92vh - 55px - 3vh - 19px - 20px);
   overflow: auto;
   padding: 0 70px 20px 0;
   display: flex;
@@ -77,5 +77,41 @@ p {
   margin-bottom: 18px;
   width: 279.5px;
   line-height: 18px;
+}
+
+@media screen and (max-width: 700px) {
+  #about img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  img {
+    width: calc(81vw - 438px);
+  }
+
+  #about {
+    gap: 3vw;
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .notranslate {
+    display: none;
+  }
+
+  #about {
+    padding: 0 0 20px 0;
+  }
+
+  #about::-webkit-scrollbar {
+    width: 4px;
+  }
+}
+
+@media screen and (max-width: 1290px) {
+  #about {
+    padding: 0 15px 20px 0;
+  }
 }
 </style>

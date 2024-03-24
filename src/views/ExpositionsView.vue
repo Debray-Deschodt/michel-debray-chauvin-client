@@ -63,15 +63,15 @@ onUnmounted(() => {
 #exhibitions {
     position: absolute;
     // top: 134px;
-    top: calc(8svh + 55px);
-    left: 340px;
-    height: calc((100svh - 8svh - 3svh) + (-19px - 55px)); //-6svh
+    top: calc(8vh + 55px);
+    left: calc(200px + 6vw + 2vh); //340px
+    height: calc((100vh - 8vh - 3vh) + (-19px - 55px)); //-6vh
 
     overflow: auto;
     padding-right: 372px;
 
     &>section {
-        height: calc(100svh - 8svh - 55px - 3svh - 19px - 6svh);
+        height: calc(100vh - 8vh - 55px - 3vh - 19px - 6vh);
         display: flex;
         gap: 40px;
         min-height: 485px;
@@ -79,8 +79,9 @@ onUnmounted(() => {
 
     &>section> :nth-child(2) {
         height: fit-content;
-        padding: 0 20px;
+        padding-left: 20px;
         margin-left: 150px;
+        width: 172px;
         border-left: 1px solid rgb(116, 116, 116);
     }
 }
@@ -102,6 +103,44 @@ div {
     img {
         height: 100%;
         // width: 300px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #exhibitions {
+        padding-right: 15px !important;
+
+        #exhibitions::-webkit-scrollbar {
+            width: 3px;
+        }
+    }
+
+    #exhibitions::-webkit-scrollbar {
+        width: 3px;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    #exhibitions {
+        padding-right: 200px;
+
+        &>section> :nth-child(2) {
+            margin-left: 25px;
+        }
+    }
+
+    #exhibitions::-webkit-scrollbar {
+        width: 3px;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    #exhibitions {
+        padding-right: 75px;
+    }
+
+    #exhibitions::-webkit-scrollbar {
+        width: 3px;
     }
 }
 </style>

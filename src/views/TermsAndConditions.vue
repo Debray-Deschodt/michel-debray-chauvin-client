@@ -117,29 +117,19 @@ onUnmounted(() => {
 
 #termsAndConditions {
     position: absolute;
-    // top: 134px;
-    top: calc(8svh + 55px);
-    left: 340px;
+
+    top: calc(8vh + 55px); //134px
+    left: calc(225px + 6vw); //340px
+
     width: 849px;
-    // calc(97svh - 19px) footer height
-    // height: calc(100svh - 134px - 3svh - 19px);
-    height: calc((100svh - 8svh - 3svh) + (-55px - 19px));
-    overflow: auto;
-    // padding-right: 70px;
+    height: calc((100vh - 8vh - 3vh) + (-55px - 19px));
+
     padding-right: 138px;
+    overflow: auto;
     font-family: "Roboto", sans-serif;
 }
 
-div {
-    margin-left: 21px;
-    font-family: inherit;
-}
-
 h2 {
-    // margin-bottom: 20px;
-    // font-size: 18px;
-    // font-weight: 500;
-    // font-family: inherit;
     margin: 30px 0 40px 0;
     font-size: 20px;
     font-weight: 400;
@@ -161,9 +151,21 @@ p {
     text-align: justify;
 }
 
+div {
+    margin-left: 21px;
+    font-family: inherit;
+}
+
 strong {
     font-weight: 500;
     font-size: 14;
     font-family: inherit;
+}
+
+@media screen and (max-width: 1350px) {
+    #termsAndConditions {
+        padding-right: 50px;
+        width: calc(60vw - 64px);
+    }
 }
 </style>
